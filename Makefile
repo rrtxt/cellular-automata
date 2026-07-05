@@ -1,4 +1,4 @@
-CC = gcc
+CC = g++
 
 CFLAGS = -Iinclude
 LDFLAGS = -Llib
@@ -7,6 +7,8 @@ LIBS = -lraylib -lgdi32 -lwinmm
 SRC = src/main.cpp
 TARGET = build/game
 
+RULES ?= 18
+
 all: $(TARGET)
 
 $(TARGET): $(SRC)
@@ -14,7 +16,8 @@ $(TARGET): $(SRC)
 	$(CC) $(SRC) $(CFLAGS) $(LDFLAGS) $(LIBS) -o $(TARGET)
 
 run: $(TARGET)
-	./$(TARGET)
+	@echo "Run with rules: $(RULES)"
+	./$(TARGET) $(RULES)
 
 clean:
 	rm -rf build
